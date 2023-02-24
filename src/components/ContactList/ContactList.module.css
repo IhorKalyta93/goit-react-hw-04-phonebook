@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0;
+  background-color: aliceblue;
+  padding: 10px;
+}
+
+.item {
+  list-style: none;
+}
+
+.remove {
+  align-items: center;
+  margin-left: 30px;
+  padding: 5px 10px;
+background-color: rgb(198, 249, 249);
+  border: transparent;
+  cursor: pointer;
+}
+
