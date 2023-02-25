@@ -8,22 +8,23 @@ export class ContactForm extends Component {
     number: '',
   };
 
-  onInputChange = event => {
-    const { name, value } = event.currentTarget;
-    this.setState({ [name]: value });
-  };
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
 
-  onSubmit = event => {
-    event.preventDefault();
-    const { name, number } = this.state;
-    this.props.onSubmit({ name, number });
-    this.reset();
-  };
+  const addContact = contact => {
+    const newContact = {
+      name: contact.name,
+      number: contact.number,
+      id: nanoid(),
+    };
 
-  reset = () => {
-    this.setState({ name: '', number: '' });
+    if (contacts.some(event => event.name === contact.name)) {
+      alert(`${contact.name} is already in contacts.`);
+    } else {
+      return setContacts(prevState => [newContact, ...prevState]);
+    }
   };
-
   
   render() {
     return (
